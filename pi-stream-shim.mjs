@@ -37,8 +37,8 @@ async function handle(req, res) {
   delete body.stream_options;
 
   const authHeader =
-    req.headers.authorization ||
-    (FALLBACK_KEY ? `Bearer ${FALLBACK_KEY}` : undefined);
+    (FALLBACK_KEY ? `Bearer ${FALLBACK_KEY}` : undefined) ||
+    req.headers.authorization;
 
   const upstreamUrl = UPSTREAM.replace(/\/+$/, "") + req.url;
 
